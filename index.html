@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>周凡茗 Fan-Ming Chou | 個人網站 Portfolio (Y2K Chrome Edition)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;700;900&family=Unbounded:wght@600;800;900&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('fm-portfolio-theme');
+        var theme = (stored === 'light' || stored === 'dark') ? stored : 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      }
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: dark;
+
+      /* Dark theme (default) */
+      --bg-color: #0B0B12;
+      --bg-glow-1: rgba(255, 113, 206, 0.15);
+      --bg-glow-2: rgba(1, 205, 254, 0.15);
+      --bg-glow-3: rgba(185, 103, 255, 0.12);
+      --card-bg: rgba(20, 20, 32, 0.75);
+      --card-dark-bg: rgba(10, 10, 18, 0.9);
+      --stat-bg: rgba(255, 255, 255, 0.04);
+      --stat-border: rgba(255, 255, 255, 0.1);
+      --divider: rgba(255, 255, 255, 0.08);
+      --tag-bg: rgba(255, 255, 255, 0.06);
+      --tag-border: rgba(255, 255, 255, 0.15);
+      --text-main: #F3F4F6;
+      --text-muted: #9CA3AF;
+      --text-dim: #8A93A5;
+      --heading-strong: #FFFFFF;
+      --accent-text: #01CDFE;
+      --accent-glow: rgba(1, 205, 254, 0.5);
+      --on-holo: #FFFFFF;
+      --avatar-text: #FF71CE;
+      --badge-gradient: linear-gradient(135deg, #FF71CE 0%, #01CDFE 33%, #05FFA1 66%, #B967FF 100%);
+      --marquee-bg: rgba(255, 255, 255, 0.03);
+      --marquee-border: rgba(255, 255, 255, 0.1);
+      --toggle-bg: rgba(20, 20, 32, 0.75);
+      --toggle-border: rgba(255, 255, 255, 0.25);
+      
+      /* Holographic Colors */
+      --holo-pink: #FF71CE;
+      --holo-blue: #01CDFE;
+      --holo-green: #05FFA1;
+      --holo-purple: #B967FF;
+      --holo-gradient: linear-gradient(135deg, #FF71CE 0%, #01CDFE 33%, #05FFA1 66%, #B967FF 100%);
+      --chrome-gradient: linear-gradient(180deg, #FFFFFF 0%, #9CA3AF 35%, #F3F4F6 60%, #6B7280 100%);
+      --chrome-shadow: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.9));
+      
+      --radius: 20px;
+      --font-display: 'Unbounded', 'Syne', sans-serif;
+      --font-body: 'Inter', 'Noto Sans TC', -apple-system, sans-serif;
+    }
+
+    /* Light theme */
+    :root[data-theme="light"] {
+      color-scheme: light;
+      --bg-color: #EEF2FB;
+      --bg-glow-1: rgba(255, 113, 206, 0.22);
+      --bg-glow-2: rgba(1, 205, 254, 0.22);
+      --bg-glow-3: rgba(185, 103, 255, 0.18);
+      --card-bg: rgba(255, 255, 255, 0.72);
+      --card-dark-bg: rgba(235, 240, 250, 0.88);
+      --stat-bg: rgba(255, 255, 255, 0.62);
+      --stat-border: rgba(15, 23, 42, 0.12);
+      --divider: rgba(15, 23, 42, 0.12);
+      --tag-bg: rgba(255, 255, 255, 0.68);
+      --tag-border: rgba(15, 23, 42, 0.16);
+      --text-main: #0F172A;
+      --text-muted: #475569;
+      --text-dim: #556072;
+      --heading-strong: #0F172A;
+      --accent-text: #0E7490;
+      --accent-glow: rgba(14, 116, 144, 0.28);
+      --on-holo: #0F172A;
+      --avatar-text: #BE185D;
+      --chrome-gradient: linear-gradient(180deg, #0F172A 0%, #334155 32%, #1E293B 58%, #475569 100%);
+      --chrome-shadow: drop-shadow(0 1px 2px rgba(15, 23, 42, 0.22));
+      --badge-gradient: linear-gradient(135deg, #C026D3 0%, #0891B2 33%, #059669 66%, #7C3AED 100%);
+      --marquee-bg: rgba(255, 255, 255, 0.45);
+      --marquee-border: rgba(15, 23, 42, 0.12);
+      --toggle-bg: rgba(255, 255, 255, 0.72);
+      --toggle-border: rgba(255, 255, 255, 0.85);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      background-image: 
+        radial-gradient(circle at 15% 15%, var(--bg-glow-1) 0%, transparent 40%),
+        radial-gradient(circle at 85% 65%, var(--bg-glow-2) 0%, transparent 45%),
+        radial-gradient(circle at 50% 90%, var(--bg-glow-3) 0%, transparent 50%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      padding: 72px 16px 24px;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Marquee Banner */
+    .marquee-container {
+      width: 100%;
+      overflow: hidden;
+      background: var(--marquee-bg);
+      border: 1px solid var(--marquee-border);
+      border-radius: 50px;
+      padding: 10px 0;
+      margin-bottom: 24px;
+      backdrop-filter: blur(8px);
+      position: relative;
+    }
+
+    .marquee-content {
+      display: flex;
+      white-space: nowrap;
+      animation: marquee 20s linear infinite;
+      gap: 32px;
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-text);
+      text-shadow: 0 0 8px var(--accent-glow);
+    }
+
+    .marquee-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .star-icon {
+      color: var(--holo-pink);
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0%); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Y2K Grid System */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 20px;
+    }
+
+    /* Y2K Chrome Glass Card Styles */
+    .tile {
+      background: var(--card-bg);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: var(--radius);
+      padding: 32px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
+    }
+
+    .tile::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius);
+      padding: 1.5px;
+      background: var(--holo-gradient);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0.75;
+      transition: opacity 0.3s ease;
+    }
+
+    .tile:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 10px 30px -10px rgba(255, 113, 206, 0.3), 0 0 20px rgba(1, 205, 254, 0.2);
+    }
+
+    .tile:hover::before {
+      opacity: 1;
+    }
+
+    .tile-dark {
+      background: var(--card-dark-bg);
+    }
+
+    .sparkle-deco {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      font-size: 20px;
+      color: var(--holo-pink);
+      text-shadow: 0 0 10px var(--holo-pink);
+      pointer-events: none;
+      opacity: 0.8;
+    }
+
+    h1, h2, h3 {
+      font-family: var(--font-display);
+    }
+
+    .chrome-text {
+      background: var(--chrome-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: var(--chrome-shadow);
+      display: inline-block;
+      letter-spacing: -0.02em;
+    }
+
+    h1 {
+      font-size: 44px;
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-size: 26px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 12px;
+    }
+
+    h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--heading-strong);
+    }
+
+    .label {
+      font-family: var(--font-display);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent-text);
+      margin-bottom: 12px;
+      display: block;
+      text-shadow: 0 0 8px var(--accent-glow);
+    }
+
+    .text-muted {
+      color: var(--text-muted);
+    }
+
+    .hero-tile { grid-column: span 8; }
+    .photo-tile { 
+      grid-column: span 4; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      text-align: center;
+      min-height: 280px;
+    }
+    .target-tile { grid-column: span 6; }
+    .skills-tile { grid-column: span 6; }
+    .project-tile { grid-column: span 6; }
+    .exp-tile { grid-column: span 12; }
+    .trait-tile { grid-column: span 4; }
+    .hobby-tile { grid-column: span 4; }
+    .contact-tile { grid-column: span 4; }
+
+    .tag-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .tag {
+      background: var(--tag-bg);
+      border: 1px solid var(--tag-border);
+      color: var(--text-main);
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 500;
+      backdrop-filter: blur(4px);
+    }
+
+    .tag-accent {
+      background: linear-gradient(135deg, rgba(255, 113, 206, 0.2), rgba(1, 205, 254, 0.2));
+      border: 1px solid var(--holo-pink);
+      color: var(--on-holo);
+      font-weight: 700;
+      box-shadow: 0 0 10px rgba(255, 113, 206, 0.3);
+    }
+
+    .item-block {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--divider);
+    }
+
+    .item-block:first-of-type {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+    }
+
+    $1background: var(--badge-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: inline-block;
+    }
+
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 28px;
+      background: var(--holo-gradient);
+      color: #0B0B12;
+      text-decoration: none;
+      border-radius: 50px;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(255, 113, 206, 0.4), inset 0 2px 2px rgba(255, 255, 255, 0.8);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn::after {
+      content: "";
+      position: absolute;
+      top: 2px;
+      left: 10px;
+      right: 10px;
+      height: 40%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.7) 0%, rgba(255,255,255,0.1) 100%);
+      border-radius: 20px 20px 8px 8px;
+      pointer-events: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 25px rgba(1, 205, 254, 0.7), inset 0 2px 4px rgba(255, 255, 255, 0.9);
+    }
+
+    .avatar-placeholder {
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(255, 113, 206, 0.2), rgba(5, 255, 161, 0.2));
+      border: 2px solid var(--holo-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 36px;
+      font-weight: 900;
+      color: var(--avatar-text);$1 rgba(1, 205, 254, 0.4);
+      margin-bottom: 12px;
+    }
+    /* Theme Toggle */
+    .theme-toggle {
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      z-index: 1000;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-width: 48px;
+      min-height: 48px;
+      padding: 0 16px;
+      background: var(--toggle-bg);
+      border: 1px solid var(--toggle-border);
+      border-radius: 50px;
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      box-shadow: 0 0 15px rgba(1, 205, 254, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.75);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 0 22px rgba(1, 205, 254, 0.55), inset 0 1px 3px rgba(255, 255, 255, 0.9);
+    }
+
+    .theme-toggle:focus-visible {
+      outline: 3px solid var(--accent-text);
+      outline-offset: 3px;
+    }
+
+    .theme-toggle__icon {
+      font-size: 18px;
+      line-height: 1;
+    }
+
+    @media (max-width: 480px) {
+      .theme-toggle {
+        width: 48px;
+        padding: 0;
+      }
+      .theme-toggle__text {
+        display: none;
+      }
+    }
+
+
+    @media (max-width: 1279px) {
+      .hero-tile { grid-column: span 12; }
+      .photo-tile { grid-column: span 12; }
+      .target-tile { grid-column: span 6; }
+      .skills-tile { grid-column: span 6; }
+      .project-tile { grid-column: span 6; }
+      .exp-tile { grid-column: span 12; }
+      .trait-tile { grid-column: span 6; }
+      .hobby-tile { grid-column: span 6; }
+      .contact-tile { grid-column: span 12; }
+    }
+
+    @media (max-width: 767px) {
+      body {
+        padding: 68px 12px 16px;
+      }
+      .bento-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+      .tile {
+        grid-column: span 1 !important;
+        padding: 24px;
+        border-radius: 20px;
+      }
+      h1 { font-size: 32px; }
+      h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+  <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="true" aria-label="切換為淺色模式" title="切換為淺色模式">
+    <span class="theme-toggle__icon" aria-hidden="true">🌙</span>
+    <span class="theme-toggle__text">深色模式</span>
+  </button>
+
+  <div class="container">
+    
+    <div class="marquee-container">
+      <div class="marquee-content">
+        <div class="marquee-item"><span class="star-icon">✦</span> GAME DEV</div>
+        <div class="marquee-item"><span class="star-icon">★</span> RHCSA CERTIFIED</div>
+        <div class="marquee-item"><span class="star-icon">✦</span> CYBERSECURITY</div>
+        <div class="marquee-item"><span class="star-icon">★</span> FIGMA UI/UX</div>
+        <div class="marquee-item"><span class="star-icon">✦</span> AI & MULTIMEDIA</div>
+        <div class="marquee-item"><span class="star-icon">★</span> SCOUT LEADER</div>
+        <div class="marquee-item"><span class="star-icon">✦</span> GAME DEV</div>
+        <div class="marquee-item"><span class="star-icon">★</span> RHCSA CERTIFIED</div>
+        <div class="marquee-item"><span class="star-icon">✦</span> CYBERSECURITY</div>
+        <div class="marquee-item"><span class="star-icon">★</span> FIGMA UI/UX</div>
+        <div class="marquee-item"><span class="star-icon">✦</span> AI & MULTIMEDIA</div>
+        <div class="marquee-item"><span class="star-icon">★</span> SCOUT LEADER</div>
+      </div>
+    </div>
+
+    <div class="bento-grid">
+
+      <!-- HERO TILE -->
+      <div class="tile hero-tile">
+        <span class="sparkle-deco">✦ ★ ✦</span>
+        <div>
+          <span class="label">ABOUT ME / 個人簡介</span>
+          <h1 class="chrome-text">周凡茗<br><span style="font-size: 26px; font-weight: 700; color: var(--accent-text); -webkit-text-fill-color: initial;">Fan-Ming Chou</span></h1>
+          <p style="font-size: 18px; font-weight: 500; margin-top: 12px;">
+            熱愛遊戲開發的資管系學生，具備 Linux 系統管理與軟體開發證照，持續自主學習 AI 技術與介面設計，期待將熱情轉化為優質遊戲體驗。
+          </p>
+        </div>
+        <div class="tag-container" style="margin-top: 24px;">
+          <span class="tag tag-accent">開南大學 資訊管理學系</span>
+          <span class="tag">大四 (大肆)</span>
+          <span class="tag">預計 2027 年 6 月畢業</span>
+        </div>
+      </div>
+
+      <!-- PHOTO TILE -->
+      <div class="tile photo-tile">
+        <span class="sparkle-deco">★</span>
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <div class="avatar-placeholder">周</div>
+          <span class="label" style="margin-bottom: 0;">個人照片</span>
+          <p class="text-muted" style="font-size: 14px;">待確認</p>
+        </div>
+      </div>
+
+      <!-- TARGET JOBS -->
+      <div class="tile target-tile">
+        <span class="sparkle-deco">✦</span>
+        <div>
+          <span class="label">CAREER TARGET / 未來目標</span>
+          <h2 class="chrome-text">想找的工作與領域</h2>
+          <div class="item-block">
+            <h3>希望職缺</h3>
+            <p>1. 遊戲程式開發者<br>2. 資訊安全工程師</p>
+          </div>
+          <div class="item-block">
+            <h3>希望產業與地點</h3>
+            <p><strong>產業：</strong>程式相關產業、遊戲開發、資訊科技業</p>
+            <p><strong>地點：</strong>雙北地區（台北市、新北市皆可）</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SKILLS & CERTIFICATIONS -->
+      <div class="tile skills-tile">
+        <span class="sparkle-deco">★</span>
+        <div>
+          <span class="label">SKILLS & CERTS / 專業技能與證照</span>
+          <h2 class="chrome-text">技術能力與認證</h2>
+          
+          <div class="item-block">
+            <h3>專業證照 (Certifications)</h3>
+            <div class="tag-container">
+              <span class="tag tag-accent">RHCSA (紅帽認證系統管理員)</span>
+              <span class="tag">電腦軟體設計乙級</span>
+              <span class="tag">電腦硬體裝修丙級</span>
+            </div>
+          </div>
+
+          <div class="item-block">
+            <h3>程式語言與工具</h3>
+            <p style="font-size: 14px; margin-bottom: 6px;"><strong>熟練：</strong></p>
+            <div class="tag-container" style="margin-top: 0; margin-bottom: 12px;">
+              <span class="tag">Figma (UI/UX 介面設計)</span>
+            </div>
+            <p style="font-size: 14px; margin-bottom: 6px;"><strong>會用 / 學過：</strong></p>
+            <div class="tag-container" style="margin-top: 0;">
+              <span class="tag">Python</span>
+              <span class="tag">Java</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROJECTS -->
+      <div class="tile project-tile">
+        <span class="sparkle-deco">✦</span>
+        <div>
+          <span class="label">PROJECTS / 專題與作品 (1)</span>
+          <h2 class="chrome-text">長照人員 APP 前端開發</h2>
+          <div class="item-block">
+            <h3>負責部分</h3>
+            <p>前端介面設計（主要負責「照護日誌」按鍵互動式核心功能頁面）</p>
+          </div>
+          <div class="item-block">
+            <h3>使用技術與進度</h3>
+            <p><strong>技術：</strong>Figma</p>
+            <p><strong>進度：</strong>60% (尚在製作中)</p>
+            <p class="text-muted" style="margin-top: 4px; font-size: 14px;">網址或 GitHub：待確認</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="tile project-tile">
+        <span class="sparkle-deco">✦</span>
+        <div>
+          <span class="label">PROJECTS / 專題與作品 (2)</span>
+          <h2 class="chrome-text">照護專員會員頁面設計</h2>
+          <div class="item-block">
+            <h3>負責部分</h3>
+            <p>照護專員會員頁面規劃（包含會員資料、工作年資、證照取得時間）</p>
+          </div>
+          <div class="item-block">
+            <h3>使用技術與進度</h3>
+            <p><strong>技術：</strong>Figma</p>
+            <p><strong>進度：</strong>60% (尚在製作中)</p>
+            <p class="text-muted" style="margin-top: 4px; font-size: 14px;">網址或 GitHub：待確認</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- EXPERIENCE (WIDE TILE) -->
+      <div class="tile exp-tile">
+        <span class="sparkle-deco">★ ✦ ★</span>
+        <div>
+          <span class="label">EXPERIENCE / 經歷與領導力</span>
+          <h2 class="chrome-text">課外經歷與社團服務</h2>
+          
+          <div class="item-block">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap;">
+              <h3>開南大學童軍團 – 器材長</h3>
+              <span class="text-muted" style="font-weight: 500;">2019/09 – 至今</span>
+            </div>
+            <p style="margin-top: 8px;"><strong>負責內容：</strong>負責整理與盤點器材、統整活動所需器材清單、負責器材搬運調度與維護。</p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 16px;">
+              <div style="background: var(--stat-bg); border: 1px solid var(--stat-border); padding: 18px; border-radius: 16px;">
+                <div class="number-badge">15+ 人</div>
+                <p style="font-size: 14px;">帶領器材組進行大型活動器材清點與搬運</p>
+              </div>
+              <div style="background: var(--stat-bg); border: 1px solid var(--stat-border); padding: 18px; border-radius: 16px;">
+                <div class="number-badge">100+ 種</div>
+                <p style="font-size: 14px;">僅靠 3 人團隊完成超過 100 種器材清點與整治</p>
+              </div>
+              <div style="background: var(--stat-bg); border: 1px solid var(--stat-border); padding: 18px; border-radius: 16px;">
+                <div class="number-badge">120+ 人</div>
+                <p style="font-size: 14px;">籌備與負責大型團慶活動之營火搭建</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PERSONAL TRAITS -->
+      <div class="tile trait-tile">
+        <span class="sparkle-deco">✦</span>
+        <div>
+          <span class="label">PERSONALITY / 個人特質</span>
+          <h2 class="chrome-text">特質與優勢</h2>
+          <div class="item-block">
+            <p class="text-muted">待確認</p>
+            <p style="font-size: 14px; margin-top: 8px; color: var(--text-dim);">（可結合童軍團高效率盤點器材與團隊合作的故事進行說明）</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- HOBBIES -->
+      <div class="tile hobby-tile">
+        <span class="sparkle-deco">★</span>
+        <div>
+          <span class="label">HOBBIES & SELF-LEARNING / 興趣與自學</span>
+          <h2 class="chrome-text">課外興趣與自學</h2>
+          <div class="item-block">
+            <h3>休閒興趣</h3>
+            <p>喜歡解謎類遊戲、戶外露營、線上多人 FPS 射擊遊戲。</p>
+          </div>
+          <div class="item-block">
+            <h3>課外自學</h3>
+            <p>自主學習 AI 程式開發與影音剪輯。</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CONTACT (DARK ACCENT TILE) -->
+      <div class="tile contact-tile tile-dark">
+        <span class="sparkle-deco">✦ ★</span>
+        <div>
+          <span class="label">CONTACT / 聯絡方式</span>
+          <h2 class="chrome-text">與我聯繫</h2>
+          <p style="margin-top: 8px; font-size: 15px;">歡迎透過 Email 或社群管道聯繫交流或合作機會！</p>
+          
+          <div class="item-block">
+            <p style="font-size: 14px;"><strong>Email:</strong><br>A0932381313@gmail.com</p>
+            <p style="font-size: 14px; margin-top: 8px;"><strong>Instagram:</strong><br>megumin_2222</p>
+            <p style="font-size: 14px; margin-top: 8px;"><strong>GitHub / LinkedIn:</strong><br><span style="color: var(--text-dim);">無 / 待確認</span></p>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <a href="mailto:A0932381313@gmail.com" class="btn">發送 Email ✦</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var toggle = document.getElementById('theme-toggle');
+      var icon = toggle.querySelector('.theme-toggle__icon');
+      var text = toggle.querySelector('.theme-toggle__text');
+      var KEY = 'fm-portfolio-theme';
+
+      function apply(theme) {
+        var dark = theme === 'dark';
+        root.setAttribute('data-theme', theme);
+        icon.textContent = dark ? '🌙' : '☀️';
+        text.textContent = dark ? '深色模式' : '淺色模式';
+        toggle.setAttribute('aria-pressed', dark ? 'true' : 'false');
+        toggle.setAttribute('aria-label', dark ? '切換為淺色模式' : '切換為深色模式');
+        toggle.setAttribute('title', dark ? '切換為淺色模式' : '切換為深色模式');
+      }
+
+      apply(root.getAttribute('data-theme') === 'light' ? 'light' : 'dark');
+
+      toggle.addEventListener('click', function () {
+        var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        apply(next);
+        try {
+          localStorage.setItem(KEY, next);
+        } catch (e) {}
+      });
+    })();
+  </script>
+</body>
+</html>
